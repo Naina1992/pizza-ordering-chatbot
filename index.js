@@ -24,7 +24,7 @@ function welcome(agent) {
   }
  //for fetching order from database.
   function handlenoofpizzano(agent){
-   return admin.database().ref('order').once("value").then((snapshot) => {
+   return admin.database().ref('order/mobile_no').once("value").then((snapshot) => {
   const value = snapshot.child('noofpizza').val();
     const value1 = snapshot.child('custsize').val(); 
      const value2 = snapshot.child ('vegpizzatype').val();
@@ -47,7 +47,7 @@ function welcome(agent) {
    function handlename(agent){
   const text = agent.parameters.name;
      
-   return admin.database().ref('order').update({
+   return admin.database().ref('order/mobile_no').update({
    name: text
    
  });
@@ -64,7 +64,7 @@ function welcome(agent) {
    const locat = agent.context.location;
    // return admin.database().ref('order').push({name: name}).then((snapshot) => {
         
-    return admin.database().ref('order').update({address : locat}).then((snapshot) => {
+    return admin.database().ref('order/mobile_no').update({address : locat}).then((snapshot) => {
   const value = snapshot.child('custsize').val();
     
   if(value !== null){
@@ -79,7 +79,7 @@ function welcome(agent) {
   
   function handlevegpizzatype(agent){
   const text = agent.parameters.text;
-   return admin.database().ref('order').update({
+   return admin.database().ref('order/mobile_no').update({
    vegpizzatype: text
      
 
@@ -92,7 +92,7 @@ function welcome(agent) {
   function handlenonvegtype(agent){
   const nonveg = agent.parameters.nonveg;
     //const context = agent.getContext('awaiting_name_confirm');   
-   return admin.database().ref('order').update({
+   return admin.database().ref('order/mobile_no').update({
    nonvegtype: nonveg
   
  });
@@ -100,7 +100,7 @@ function welcome(agent) {
   function handlecustsize(agent){
   const size = agent.parameters.size;
      
-   return admin.database().ref('order').update({
+   return admin.database().ref('order/mobile_no').update({
    custsize: size
    
  });
@@ -109,7 +109,7 @@ function welcome(agent) {
   function handletoppingtype(agent){
   const text = agent.parameters.text;
      
-   return admin.database().ref('order').update({
+   return admin.database().ref('order/mobile_no').update({
    toppingtype: text
    
  });
@@ -117,7 +117,7 @@ function welcome(agent) {
   function handlecrusttype(agent){
   const text = agent.parameters.text;
      
-   return admin.database().ref('order').update({
+   return admin.database().ref('order/mobile_no').update({
    crusttype: text
    
  });
